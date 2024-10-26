@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestManagement.Api", "TestM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestManagement.Models", "TestManagement.Models\TestManagement.Models.csproj", "{5E605037-8B44-4161-9CE5-45AE365882F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestManagement.DataAccess", "TestManagement.DataAccess\TestManagement.DataAccess.csproj", "{F9A81236-BA6D-41A3-9412-5375D2F9B3D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5E605037-8B44-4161-9CE5-45AE365882F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E605037-8B44-4161-9CE5-45AE365882F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E605037-8B44-4161-9CE5-45AE365882F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A81236-BA6D-41A3-9412-5375D2F9B3D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A81236-BA6D-41A3-9412-5375D2F9B3D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A81236-BA6D-41A3-9412-5375D2F9B3D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A81236-BA6D-41A3-9412-5375D2F9B3D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
