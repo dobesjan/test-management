@@ -12,9 +12,10 @@ namespace TestManagement.Api.Controllers
 		public TestsuiteController(ITestSuiteRepository repository) : base(repository) { }
 
 		[HttpGet("GetForProject")]
-		public IActionResult GetForProject(int offset, int limit)
+		public IActionResult GetForProject(int id, int offset, int limit)
 		{
-			throw new NotImplementedException();
+			var suites = _repository.GetAll(filter: s => s.ProjectId.HasValue && s.ProjectId == id, offset: offset, limit: limit);
+			return Ok(suites);
 		}
 	}
 }
