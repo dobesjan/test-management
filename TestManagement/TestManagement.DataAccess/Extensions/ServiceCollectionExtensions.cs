@@ -15,6 +15,8 @@ namespace TestManagement.DataAccess.Extensions
 		{
 			services.AddScoped<IProjectRepository, ProjectRepository>();
 			services.AddScoped<ITestSuiteRepository, TestSuiteRepository>();
+			services.AddScoped<ITestCaseRepository, TestCaseRepository>();
+
 			services.AddScoped<ITeamRepository, TeamRepository>();
 
 			return services;

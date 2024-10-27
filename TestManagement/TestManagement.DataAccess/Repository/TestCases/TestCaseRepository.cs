@@ -8,11 +8,11 @@ using TestManagement.Models.TestCases;
 
 namespace TestManagement.DataAccess.Repository.TestCases
 {
-	public class TestSuiteRepository : Repository<TestSuite>, ITestSuiteRepository
+	public class TestCaseRepository : Repository<TestCase>, ITestCaseRepository
 	{
-		public TestSuiteRepository(ApplicationDbContext context) : base(context) 
+		public TestCaseRepository(ApplicationDbContext context) : base(context) 
 		{
-			this.properties = "TestCases,TestCases.TestLabel";
+			this.properties = "TestSuite,TestCaseHasTestLabel.TestLabel";
 		}
 	}
 }

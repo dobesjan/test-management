@@ -10,6 +10,9 @@ namespace TestManagement.DataAccess.Repository.TestCases
 {
 	public class ProjectRepository : Repository<Project>, IProjectRepository
 	{
-		public ProjectRepository(ApplicationDbContext context) : base(context) { }
+		public ProjectRepository(ApplicationDbContext context) : base(context) 
+		{
+			this.properties = "ProjectHasTestLabels.TestLabel";
+		}
 	}
 }

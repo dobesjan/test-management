@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -16,6 +17,10 @@ namespace TestManagement.Models.TestCases
 
 		[ForeignKey(nameof(ProjectId))]
 		public Project? Project { get; set; }
+
+		[InverseProperty(nameof(TestSuite))]
+		[ValidateNever]
+		public List<TestCase>? TestCases { get; set; }
 
 		public List<TestSuiteHasLabel>? TestSuiteHasLabels { get; set; }
 	}
