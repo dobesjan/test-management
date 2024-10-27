@@ -17,8 +17,10 @@ namespace TestManagement.Models.TestCases
 		public int TestSuiteId { get; set; }
 
 		[ForeignKey(nameof(TestSuiteId))]
-		public TestSuite Suite { get; set; }
+		public TestSuite TestSuite { get; set; }
 
 		public List<TestCaseHasTestLabel>? TestCaseHasTestLabel { get; set; }
+
+		public List<TestCaseHasTestStep>? TestCaseHasTestSteps { get; set; }
 	}
 }

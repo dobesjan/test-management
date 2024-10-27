@@ -7,20 +7,37 @@ using System.Threading.Tasks;
 using TestManagement.Models.Filters;
 using TestManagement.Models.Teams;
 using TestManagement.Models.TestCases;
+using TestManagement.Models.TestCases.Results;
 
 namespace TestManagement.DataAccess.Context
 {
 	public class ApplicationDbContext : DbContext
 	{
+		#region Test entities
 		public DbSet<Project> Projects { get; set; }
 		public DbSet<TestSuite> TestSuites { get; set; }
 		public DbSet<TestCase> TestCases { get; set; }
+		public DbSet<TestStep> TestSteps { get; set; }
+		#endregion
 
+		#region Test entities relations
+		public DbSet<TestSuiteHasLabel> TestSuiteHasLabels { get; set; }
 		public DbSet<TestCaseHasTestLabel> TestCaseHasTestLabel { get; set; }
-		
-		public DbSet<Team> Teams { get; set; }
+		public DbSet<TestCaseHasTestStep> TestCaseHasTestSteps { get; set; }
+		#endregion
 
+		#region Results
+		public DbSet<TestCaseResult> TestCaseResults { get; set; }
+		public DbSet<TestStepResult> TestStepResults { get; set; }
+		#endregion
+
+		#region Teams
+		public DbSet<Team> Teams { get; set; }
+		#endregion
+
+		#region Labels
 		public DbSet<TestLabel> TestLabels { get; set; }
+		#endregion
 
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
 		{
@@ -67,6 +84,19 @@ namespace TestManagement.DataAccess.Context
 				.HasOne(pc => pc.TestLabel)
 				.WithMany(c => c.ProjectHasTestLabels)
 				.HasForeignKey(pc => pc.TestLabelId);
+
+			modelBuilder.Entity<TestCaseHasTestStep>()
+				.HasKey(pc => new { pc.TestCaseId, pc.TestStepId });
+
+			modelBuilder.Entity<TestCaseHasTestStep>()
+				.HasOne(pc => pc.TestCase)
+				.WithMany(p => p.TestCaseHasTestSteps)
+				.HasForeignKey(pc => pc.TestCaseId);
+
+			modelBuilder.Entity<TestCaseHasTestStep>()
+				.HasOne(pc => pc.TestStep)
+				.WithMany(c => c.TestCaseHasTestSteps)
+				.HasForeignKey(pc => pc.TestStepId);
 
 			base.OnModelCreating(modelBuilder);
 		}
