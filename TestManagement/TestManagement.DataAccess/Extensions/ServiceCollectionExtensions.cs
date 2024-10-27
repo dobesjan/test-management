@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestManagement.DataAccess.Repository.Teams;
 using TestManagement.DataAccess.Repository.TestCases;
 
 namespace TestManagement.DataAccess.Extensions
@@ -14,6 +15,7 @@ namespace TestManagement.DataAccess.Extensions
 		{
 			services.AddScoped<IProjectRepository, ProjectRepository>();
 			services.AddScoped<ITestSuiteRepository, TestSuiteRepository>();
+			services.AddScoped<ITeamRepository, TeamRepository>();
 
 			return services;
 		}

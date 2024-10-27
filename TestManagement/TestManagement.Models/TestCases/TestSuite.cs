@@ -16,5 +16,7 @@ namespace TestManagement.Models.TestCases
 
 		[ForeignKey(nameof(ProjectId))]
 		public Project? Project { get; set; }
+
+		public List<TestSuiteHasLabel>? TestSuiteHasLabels { get; set; }
 	}
 }
