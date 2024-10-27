@@ -11,6 +11,8 @@ namespace TestManagement.Models.TestCases
 {
 	public class TestCase : Entity
 	{
+		public string Identifier { get; set; }
+
 		public string Name { get; set; }
 		public string Description { get; set; }
 

@@ -10,7 +10,7 @@ namespace TestManagement.Models.TestCases
 	public class TestStep : Entity
 	{
 		// Used for identify step
-		public int StepIdentifier { get; set; }
+		public string Identifier { get; set; }
 
 		public string Name { get; set; }
 

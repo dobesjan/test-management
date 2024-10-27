@@ -17,7 +17,7 @@ namespace TestManagement.Models.TestCases.Results
 
     public class TestCaseResult : Entity
     {
-        public int TestCaseId { get; set; }
+		public int TestCaseId { get; set; }
 
         [ForeignKey(nameof(TestCaseId))]
         public TestCase TestCase { get; set; }
