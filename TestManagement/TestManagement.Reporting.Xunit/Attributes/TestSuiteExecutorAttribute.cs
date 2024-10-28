@@ -15,7 +15,7 @@ namespace TestManagement.Reporting.Xunit.Attributes
 	{
 		public override void Before(MethodInfo methodUnderTest)
 		{
-			var attribute = (TestSuiteAttribute)Attribute.GetCustomAttribute(methodUnderTest, typeof(TestSuiteAttribute));
+			var attribute = (TestSuiteAttribute)Attribute.GetCustomAttribute(methodUnderTest.DeclaringType, typeof(TestSuiteAttribute));
 
 			if (attribute != null)
 			{
