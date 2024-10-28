@@ -9,7 +9,7 @@ using TestManagement.Reporting.Xunit.Attributes;
 namespace TestManagement.Reporting.Xunit.Test
 {
 	[TestSuiteExecutor]
-	[TestSuite("TestSuite2", "2", "1", "Testing suite 2")]
+	[TestSuite("TestSuite2", "2", 1, "Testing suite 2")]
 	public class TestSuite2
 	{
 		[Fact]
