@@ -17,5 +17,10 @@ namespace TestManagement.Reporting.Shared
 			string json = JsonConvert.SerializeObject(TestSuites, Formatting.Indented);
 			File.WriteAllText("TestReport.json", json);
 		}
+
+		public static void ClearReport()
+		{
+			TestSuites.Clear();
+		}
 	}
 }

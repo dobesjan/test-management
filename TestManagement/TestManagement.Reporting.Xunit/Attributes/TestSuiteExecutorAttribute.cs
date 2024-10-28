@@ -20,15 +20,21 @@ namespace TestManagement.Reporting.Xunit.Attributes
 
 			if (attribute != null)
 			{
-				var testSuite = new ReportTestSuite
+				var existingSuite = TestReportManager.TestSuites
+				.FirstOrDefault(suite => suite.Identifier == attribute.Identifier);
+
+				if (existingSuite == null)
 				{
-					Name = attribute.SuiteName,
-					Identifier = attribute.Identifier,
-					Description = attribute.Description,
-					TestCases = new List<ReportTestCase>(),
-					ProjectId = attribute.ProjectId
-				};
-				TestReportManager.TestSuites.Add(testSuite);
+					var testSuite = new ReportTestSuite
+					{
+						Name = attribute.SuiteName,
+						Identifier = attribute.Identifier,
+						Description = attribute.Description,
+						TestCases = new List<ReportTestCase>(),
+						ProjectId = attribute.ProjectId
+					};
+					TestReportManager.TestSuites.Add(testSuite);
+				}
 			}
 		}
 

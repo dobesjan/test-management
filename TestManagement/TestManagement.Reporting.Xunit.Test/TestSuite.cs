@@ -6,7 +6,7 @@ namespace TestManagement.Reporting.Xunit.Test
 {
 	[TestSuiteExecutor]
 	[TestSuite("TestSuite", "1", "1", "Testing suite")]
-	public class XunitTest
+	public class TestSuite
 	{
 		[Fact]
 		[TestCase("Test 1", "1", "Testing test")]
