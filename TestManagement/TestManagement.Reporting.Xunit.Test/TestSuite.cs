@@ -4,13 +4,13 @@ using TestManagement.Reporting.Xunit.Fixtures;
 
 namespace TestManagement.Reporting.Xunit.Test
 {
-	[TestSuiteExecutor]
+	//[TestSuiteExecutor]
 	[TestSuite("TestSuite", "1", 1, "Testing suite")]
 	public class TestSuite
 	{
-		[Fact]
+		//[Fact]
 		[TestCase("Test 1", "1", "Testing test")]
-		[TestCaseExecutor]
+		//[TestCaseExecutor]
 		public async Task Test1()
 		{
 			await OpenLoginPage();

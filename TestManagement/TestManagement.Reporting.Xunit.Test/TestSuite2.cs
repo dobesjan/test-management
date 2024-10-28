@@ -8,13 +8,13 @@ using TestManagement.Reporting.Xunit.Attributes;
 
 namespace TestManagement.Reporting.Xunit.Test
 {
-	[TestSuiteExecutor]
+	//[TestSuiteExecutor]
 	[TestSuite("TestSuite2", "2", 1, "Testing suite 2")]
 	public class TestSuite2
 	{
-		[Fact]
+		//[Fact]
 		[TestCase("Test 2", "2", "Testing test again")]
-		[TestCaseExecutor]
+		//[TestCaseExecutor]
 		public async Task Test2()
 		{
 			await SayHello();

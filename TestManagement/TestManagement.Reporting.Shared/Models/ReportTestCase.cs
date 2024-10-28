@@ -21,5 +21,6 @@ namespace TestManagement.Reporting.Shared.Models
 		public List<ReportTestStep> TestSteps { get; set; }
 
 		public TestCaseStatus Status { get; set; }
+		public ReportError? Error { get; set; }
 	}
 }
