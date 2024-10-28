@@ -13,20 +13,24 @@ namespace TestManagement.Reporting.Xunit.Attributes
 {
 	public class TestCaseExecutorAttribute : BeforeAfterTestAttribute
 	{
+		private DateTime _startTime;
+		private ReportTestSuite _currentSuite;
+		private ReportTestCase _currentTestCase;
+
 		public override void Before(MethodInfo methodUnderTest)
 		{
 			var attribute = (TestCaseAttribute)Attribute.GetCustomAttribute(methodUnderTest, typeof(TestCaseAttribute));
 
 			if (attribute != null)
 			{
-				var testCase = new ReportTestCase
+				_currentTestCase = new ReportTestCase
 				{
 					Name = attribute.TestName,
 					Identifier = attribute.Identifier,
 					Description = attribute.Description
 				};
-				var currentSuite = TestReportManager.TestSuites.LastOrDefault();
-				currentSuite?.TestCases.Add(testCase);
+				_currentSuite = TestReportManager.TestSuites.LastOrDefault();
+				_currentSuite?.TestCases.Add(_currentTestCase);
 			}
 		}
 
@@ -54,10 +58,6 @@ namespace TestManagement.Reporting.Xunit.Attributes
 						{
 							Console.WriteLine($"Found Test Step: {stepAttribute.StepName}, ID: {stepAttribute.Identifier}");
 
-							// Here, you could add the test step information to the report or log it
-							var currentTestCase = TestReportManager.TestSuites
-												  .LastOrDefault()?.TestCases.LastOrDefault();
-
 							var testStep = new ReportTestStep
 							{
 								Name = stepAttribute.StepName,
@@ -66,14 +66,14 @@ namespace TestManagement.Reporting.Xunit.Attributes
 							};
 
 							// Link the test step to the current test case
-							if (currentTestCase != null)
+							if (_currentTestCase != null)
 							{
-								if (currentTestCase.TestSteps == null)
+								if (_currentTestCase.TestSteps == null)
 								{
-									currentTestCase.TestSteps = new List<ReportTestStep>();
+									_currentTestCase.TestSteps = new List<ReportTestStep>();
 								}
 
-								currentTestCase.TestSteps.Add(testStep);
+								_currentTestCase.TestSteps.Add(testStep);
 							}
 						}
 					}

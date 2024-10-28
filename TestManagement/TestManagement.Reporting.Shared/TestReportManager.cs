@@ -10,12 +10,16 @@ namespace TestManagement.Reporting.Shared
 {
 	public static class TestReportManager
 	{
+		private static readonly object _lock = new object();
 		public static List<ReportTestSuite> TestSuites = new List<ReportTestSuite>();
 
 		public static void WriteReportToFile()
 		{
-			string json = JsonConvert.SerializeObject(TestSuites, Formatting.Indented);
-			File.WriteAllText("TestReport.json", json);
+            lock (_lock)
+            {
+				string json = JsonConvert.SerializeObject(TestSuites, Formatting.Indented);
+				File.WriteAllText("TestReport.json", json);
+			}
 		}
 
 		public static void ClearReport()
