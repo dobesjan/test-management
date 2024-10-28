@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TestManagement.DataAccess.Repository.TestCases;
+using TestManagement.DataAccess.Repository.TestCases.Results;
 using TestManagement.Models.TestCases;
 using TestManagement.Reporting.Shared.Models;
 
@@ -13,6 +14,9 @@ namespace TestManagement.Api.Controllers
 		private readonly ITestSuiteRepository _testSuiteRepository;
 		private readonly ITestCaseRepository _testCaseRepository;
 		private readonly ITestStepRepository _stepRepository;
+		private readonly ITestCaseResultRepository _testCaseResultRepository;
+		private readonly ITestStepResultRepository _stepResultRepository;
+
 
 		private readonly ILogger<ResultController> _logger;
 
@@ -21,6 +25,8 @@ namespace TestManagement.Api.Controllers
 			ITestSuiteRepository testSuiteRepository,
 			ITestCaseRepository testCaseRepository,
 			ITestStepRepository stepRepository,
+			ITestCaseResultRepository testCaseResultRepository,
+			ITestStepResultRepository stepResultRepository,
 			ILogger<ResultController> logger
 			)
 		{
@@ -28,6 +34,8 @@ namespace TestManagement.Api.Controllers
 			_testSuiteRepository = testSuiteRepository;
 			_testCaseRepository = testCaseRepository;
 			_stepRepository = stepRepository;
+			_testCaseResultRepository = testCaseResultRepository;
+			_stepResultRepository = stepResultRepository;
 			_logger = logger;
 		}
 
@@ -49,6 +57,20 @@ namespace TestManagement.Api.Controllers
 			}
 
 			return Ok();
+		}
+
+		[HttpGet("GetForTestCase")]
+		public IActionResult GetForTestCase(int testCaseId, int offset, int limit)
+		{
+			var results = _testCaseResultRepository.GetAll(r => r.TestCaseId == testCaseId);
+			return Ok(results);
+		}
+
+		[HttpGet("GetForTestStep")]
+		public IActionResult GetForTestStep(int testStepId, int offset, int limit)
+		{
+			var results = _stepResultRepository.GetAll(r => r.TestStepId == testStepId);
+			return Ok(results);
 		}
 
 		#region Upload test results

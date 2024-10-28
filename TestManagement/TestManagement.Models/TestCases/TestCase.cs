@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using TestManagement.Models.Filters;
+using TestManagement.Models.TestCases.Results;
 using TestManagement.Reporting.Shared.Models;
 
 namespace TestManagement.Models.TestCases
@@ -29,6 +30,9 @@ namespace TestManagement.Models.TestCases
 		public List<TestCaseHasTestLabel>? TestCaseHasTestLabel { get; set; }
 
 		public List<TestCaseHasTestStep>? TestCaseHasTestSteps { get; set; }
+
+		[InverseProperty(nameof(TestCase))]
+		public List<TestCaseResult>? Results { get; set; }
 
 		public void UpdateFromReport(ReportTestCase reportTestCase)
 		{

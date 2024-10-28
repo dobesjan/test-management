@@ -10,6 +10,9 @@ namespace TestManagement.DataAccess.Repository.TestCases
 {
 	public class TestStepRepository : Repository<TestStep>, ITestStepRepository
 	{
-		public TestStepRepository(ApplicationDbContext context) : base(context) { }
+		public TestStepRepository(ApplicationDbContext context) : base(context) 
+		{
+			this.properties = "TestStepResult";
+		}
 	}
 }

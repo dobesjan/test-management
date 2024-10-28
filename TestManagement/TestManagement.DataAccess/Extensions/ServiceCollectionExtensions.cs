@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestManagement.DataAccess.Repository.Teams;
 using TestManagement.DataAccess.Repository.TestCases;
+using TestManagement.DataAccess.Repository.TestCases.Results;
 
 namespace TestManagement.DataAccess.Extensions
 {
@@ -17,6 +18,9 @@ namespace TestManagement.DataAccess.Extensions
 			services.AddScoped<ITestSuiteRepository, TestSuiteRepository>();
 			services.AddScoped<ITestCaseRepository, TestCaseRepository>();
 			services.AddScoped<ITestStepRepository, TestStepRepository>();
+
+			services.AddScoped<ITestCaseResultRepository, TestCaseResultRepository>();
+			services.AddScoped<ITestStepResultRepository, TestStepResultRepository>();
 
 			services.AddScoped<ITeamRepository, TeamRepository>();
 

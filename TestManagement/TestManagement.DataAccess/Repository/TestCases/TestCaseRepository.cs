@@ -12,7 +12,7 @@ namespace TestManagement.DataAccess.Repository.TestCases
 	{
 		public TestCaseRepository(ApplicationDbContext context) : base(context) 
 		{
-			this.properties = "TestSuite,TestCaseHasTestLabel.TestLabel";
+			this.properties = "TestSuite,TestCaseHasTestLabel.TestLabel,TestCaseResult";
 		}
 	}
 }
