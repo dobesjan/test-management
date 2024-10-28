@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TestManagement.Models.TestCases;
+using TestManagement.Reporting.Shared;
 using Xunit.Sdk;
 
 namespace TestManagement.Reporting.Xunit.Attributes
@@ -16,7 +18,28 @@ namespace TestManagement.Reporting.Xunit.Attributes
 
 			if (attribute != null)
 			{
-				Console.WriteLine($"Starting Step: {attribute.StepName}, Expected Result: {attribute.ExpectedResult}");
+				var testStep = new TestStep
+				{
+					Name = attribute.StepName,
+					Identifier = attribute.Identifier,
+					Description = attribute.ExpectedResult
+				};
+
+				var currentTestCase = TestReportManager.TestSuites
+										.LastOrDefault()?.TestCases.LastOrDefault();
+
+				TestCaseHasTestStep relation = new TestCaseHasTestStep
+				{
+					TestCase = currentTestCase,
+					TestStep = testStep
+				};
+
+				if (currentTestCase.TestCaseHasTestSteps == null)
+				{
+					currentTestCase.TestCaseHasTestSteps = new List<TestCaseHasTestStep>();
+				}
+
+				currentTestCase.TestCaseHasTestSteps.Add(relation);
 			}
 		}
 

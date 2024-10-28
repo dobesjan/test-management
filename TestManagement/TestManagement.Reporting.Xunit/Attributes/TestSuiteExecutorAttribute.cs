@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TestManagement.Models.TestCases;
+using TestManagement.Reporting.Shared;
 using TestManagement.Reporting.Shared.Attributes;
 using Xunit.Sdk;
 
@@ -14,22 +15,24 @@ namespace TestManagement.Reporting.Xunit.Attributes
 	{
 		public override void Before(MethodInfo methodUnderTest)
 		{
-			var attribute = (TestSuiteAttribute)Attribute.GetCustomAttribute(methodUnderTest, typeof(TestStepAttribute));
+			var attribute = (TestSuiteAttribute)Attribute.GetCustomAttribute(methodUnderTest, typeof(TestSuiteAttribute));
 
 			if (attribute != null)
 			{
-				Console.WriteLine($"Starting test suite: {attribute.SuiteName}");
+				var testSuite = new TestSuite
+				{
+					Name = attribute.SuiteName,
+					Identifier = attribute.Identifier,
+					Description = attribute.Description,
+					TestCases = new List<TestCase>()
+				};
+				TestReportManager.TestSuites.Add(testSuite);
 			}
 		}
 
 		public override void After(MethodInfo methodUnderTest)
 		{
-			var attribute = (TestSuiteAttribute)Attribute.GetCustomAttribute(methodUnderTest, typeof(TestStepAttribute));
-
-			if (attribute != null)
-			{
-				Console.WriteLine($"Completed test suite: {attribute.SuiteName}");
-			}
+			TestReportManager.WriteReportToFile();
 		}
 	}
 }
