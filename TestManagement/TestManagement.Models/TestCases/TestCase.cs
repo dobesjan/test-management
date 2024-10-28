@@ -22,6 +22,10 @@ namespace TestManagement.Models.TestCases
 		[ForeignKey(nameof(TestSuiteId))]
 		public TestSuite TestSuite { get; set; }
 
+		public bool AddedAutomatically { get; set; }
+
+		public bool Automated { get; set; }
+
 		public List<TestCaseHasTestLabel>? TestCaseHasTestLabel { get; set; }
 
 		public List<TestCaseHasTestStep>? TestCaseHasTestSteps { get; set; }
@@ -31,6 +35,7 @@ namespace TestManagement.Models.TestCases
 			Identifier = reportTestCase.Identifier;
 			Name = reportTestCase.Name;
 			Description = reportTestCase.Description;
+			AddedAutomatically = true;
 		}
 	}
 }

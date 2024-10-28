@@ -51,6 +51,7 @@ namespace TestManagement.Api.Controllers
 			return Ok();
 		}
 
+		#region Upload test results
 		private void SaveTestStepForTestCase(ReportTestCase reportTestCase, TestCase testCase)
 		{
 			if (reportTestCase.TestSteps != null)
@@ -136,5 +137,7 @@ namespace TestManagement.Api.Controllers
 			_testSuiteRepository.Save();
 			return testSuite;
 		}
+
+		#endregion
 	}
 }

@@ -27,11 +27,14 @@ namespace TestManagement.Models.TestCases
 
 		public List<TestSuiteHasLabel>? TestSuiteHasLabels { get; set; }
 
+		public bool AddedAutomatically { get; set; }
+
 		public void UpdateFromReport(ReportTestSuite reportTestSuite)
 		{
 			Name = reportTestSuite.Name;
 			Description = reportTestSuite.Description;
 			ProjectId = reportTestSuite.ProjectId;
+			AddedAutomatically = true;
 		}
 
 		public static TestSuite FromReportTestSuite(ReportTestSuite reportTestSuite)
@@ -44,6 +47,7 @@ namespace TestManagement.Models.TestCases
 				TestCases = new List<TestCase>(),
 				TestSuiteHasLabels = new List<TestSuiteHasLabel>(),
 				ProjectId = reportTestSuite.ProjectId,
+				AddedAutomatically = true
 			};
 
 			if (testSuite.TestCases != null)

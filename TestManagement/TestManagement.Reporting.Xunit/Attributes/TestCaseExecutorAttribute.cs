@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TestManagement.Models.TestCases;
 using TestManagement.Reporting.Shared;
 using TestManagement.Reporting.Shared.Models;
+using Xunit.Abstractions;
 using Xunit.Sdk;
 
 namespace TestManagement.Reporting.Xunit.Attributes
@@ -16,6 +17,7 @@ namespace TestManagement.Reporting.Xunit.Attributes
 		private DateTime _startTime;
 		private ReportTestSuite _currentSuite;
 		private ReportTestCase _currentTestCase;
+		private bool _passed = true;
 
 		public override void Before(MethodInfo methodUnderTest)
 		{
@@ -27,7 +29,8 @@ namespace TestManagement.Reporting.Xunit.Attributes
 				{
 					Name = attribute.TestName,
 					Identifier = attribute.Identifier,
-					Description = attribute.Description
+					Description = attribute.Description,
+					Status = TestCaseStatus.SUCCESS
 				};
 				_currentSuite = TestReportManager.TestSuites.LastOrDefault();
 				_currentSuite?.TestCases.Add(_currentTestCase);

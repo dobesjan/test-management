@@ -17,12 +17,15 @@ namespace TestManagement.Models.TestCases
 
 		public string Description { get; set; }
 
+		public bool AddedAutomatically { get; set; }
+
 		public List<TestCaseHasTestStep>? TestCaseHasTestSteps { get; set; }
 
 		public void UpdateFromReport(ReportTestStep reportTestStep)
 		{
 			Name = reportTestStep.Name;
 			Description = reportTestStep.Description;
+			AddedAutomatically = true;
 		}
 	}
 }
