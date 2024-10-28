@@ -21,6 +21,8 @@ namespace TestManagement.Reporting.Xunit.Attributes
 
 		public TestCaseAttribute(string testName, string identifier, string description)
 		{
+			TestName = testName;
+			Identifier = identifier;
 			Description = description;
 		}
 	}

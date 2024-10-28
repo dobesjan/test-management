@@ -36,6 +36,53 @@ namespace TestManagement.Reporting.Xunit.Attributes
 			if (attribute != null)
 			{
 				Console.WriteLine($"Completed test: {attribute.TestName}");
+
+				// Get the declaring type to find all methods with TestStep attribute
+				var declaringType = methodUnderTest.DeclaringType;
+				if (declaringType != null)
+				{
+					// Find all methods with TestStep attribute within the test class
+					var testStepMethods = declaringType.GetMethods()
+						.Where(m => m.GetCustomAttribute<TestStepAttribute>() != null);
+
+					// Iterate over each test step method to resolve information
+					foreach (var stepMethod in testStepMethods)
+					{
+						var stepAttribute = stepMethod.GetCustomAttribute<TestStepAttribute>();
+						if (stepAttribute != null)
+						{
+							Console.WriteLine($"Found Test Step: {stepAttribute.StepName}, ID: {stepAttribute.Identifier}");
+
+							// Here, you could add the test step information to the report or log it
+							var currentTestCase = TestReportManager.TestSuites
+												  .LastOrDefault()?.TestCases.LastOrDefault();
+
+							var testStep = new TestStep
+							{
+								Name = stepAttribute.StepName,
+								Identifier = stepAttribute.Identifier,
+								Description = stepAttribute.ExpectedResult
+							};
+
+							// Link the test step to the current test case
+							if (currentTestCase != null)
+							{
+								if (currentTestCase.TestCaseHasTestSteps == null)
+								{
+									currentTestCase.TestCaseHasTestSteps = new List<TestCaseHasTestStep>();
+								}
+
+								TestCaseHasTestStep relation = new TestCaseHasTestStep
+								{
+									//TestCase = currentTestCase,
+									TestStep = testStep
+								};
+
+								currentTestCase.TestCaseHasTestSteps.Add(relation);
+							}
+						}
+					}
+				}
 			}
 		}
 	}

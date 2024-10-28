@@ -18,7 +18,6 @@ namespace TestManagement.Reporting.Xunit.Test
 			await EnterPassword();
 		}
 
-		[TestStepExecutor]
 		[TestStep("Open Login Page", "100", "Login page should be displayed")]
 		public async Task OpenLoginPage()
 		{
@@ -26,7 +25,6 @@ namespace TestManagement.Reporting.Xunit.Test
 			await Task.CompletedTask;
 		}
 
-		[TestStepExecutor]
 		[TestStep("Enter Username", "101", "Username should be entered correctly")]
 		public async Task EnterUsername()
 		{
@@ -34,7 +32,6 @@ namespace TestManagement.Reporting.Xunit.Test
 			await Task.CompletedTask;
 		}
 
-		[TestStepExecutor]
 		[TestStep("Enter Password", "102", "Password should be entered correctly")]
 		public async Task EnterPassword()
 		{
