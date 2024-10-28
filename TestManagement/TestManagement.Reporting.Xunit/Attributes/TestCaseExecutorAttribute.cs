@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestManagement.Models.TestCases;
 using TestManagement.Reporting.Shared;
+using TestManagement.Reporting.Shared.Models;
 using Xunit.Sdk;
 
 namespace TestManagement.Reporting.Xunit.Attributes
@@ -18,7 +19,7 @@ namespace TestManagement.Reporting.Xunit.Attributes
 
 			if (attribute != null)
 			{
-				var testCase = new TestCase
+				var testCase = new ReportTestCase
 				{
 					Name = attribute.TestName,
 					Identifier = attribute.Identifier,
@@ -57,7 +58,7 @@ namespace TestManagement.Reporting.Xunit.Attributes
 							var currentTestCase = TestReportManager.TestSuites
 												  .LastOrDefault()?.TestCases.LastOrDefault();
 
-							var testStep = new TestStep
+							var testStep = new ReportTestStep
 							{
 								Name = stepAttribute.StepName,
 								Identifier = stepAttribute.Identifier,
@@ -67,18 +68,12 @@ namespace TestManagement.Reporting.Xunit.Attributes
 							// Link the test step to the current test case
 							if (currentTestCase != null)
 							{
-								if (currentTestCase.TestCaseHasTestSteps == null)
+								if (currentTestCase.TestSteps == null)
 								{
-									currentTestCase.TestCaseHasTestSteps = new List<TestCaseHasTestStep>();
+									currentTestCase.TestSteps = new List<ReportTestStep>();
 								}
 
-								TestCaseHasTestStep relation = new TestCaseHasTestStep
-								{
-									//TestCase = currentTestCase,
-									TestStep = testStep
-								};
-
-								currentTestCase.TestCaseHasTestSteps.Add(relation);
+								currentTestCase.TestSteps.Add(testStep);
 							}
 						}
 					}

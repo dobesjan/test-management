@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TestManagement.Models.TestCases;
 using TestManagement.Reporting.Shared;
 using TestManagement.Reporting.Shared.Attributes;
+using TestManagement.Reporting.Shared.Models;
 using Xunit.Sdk;
 
 namespace TestManagement.Reporting.Xunit.Attributes
@@ -19,12 +20,13 @@ namespace TestManagement.Reporting.Xunit.Attributes
 
 			if (attribute != null)
 			{
-				var testSuite = new TestSuite
+				var testSuite = new ReportTestSuite
 				{
 					Name = attribute.SuiteName,
 					Identifier = attribute.Identifier,
 					Description = attribute.Description,
-					TestCases = new List<TestCase>()
+					TestCases = new List<ReportTestCase>(),
+					ProjectId = attribute.ProjectId
 				};
 				TestReportManager.TestSuites.Add(testSuite);
 			}

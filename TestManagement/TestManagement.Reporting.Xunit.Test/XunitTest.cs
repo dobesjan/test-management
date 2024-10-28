@@ -5,7 +5,7 @@ using TestManagement.Reporting.Xunit.Fixtures;
 namespace TestManagement.Reporting.Xunit.Test
 {
 	[TestSuiteExecutor]
-	[TestSuite("TestSuite", "1", "Testing suite")]
+	[TestSuite("TestSuite", "1", "1", "Testing suite")]
 	public class XunitTest
 	{
 		[Fact]

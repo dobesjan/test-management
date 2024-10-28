@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TestManagement.Models.TestCases;
+using TestManagement.Reporting.Shared.Models;
 
 namespace TestManagement.Reporting.Shared
 {
 	public static class TestReportManager
 	{
-		public static List<TestSuite> TestSuites = new List<TestSuite>();
+		public static List<ReportTestSuite> TestSuites = new List<ReportTestSuite>();
 
 		public static void WriteReportToFile()
 		{

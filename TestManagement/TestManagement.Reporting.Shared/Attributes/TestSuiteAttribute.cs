@@ -12,17 +12,20 @@ namespace TestManagement.Reporting.Shared.Attributes
 		public string SuiteName { get; }
 		public string Identifier { get; }
 		public string Description { get; }
+		public string ProjectId { get; }
 
-		public TestSuiteAttribute(string suitName, string identifier)
+		public TestSuiteAttribute(string suitName, string identifier, string projectId)
 		{
 			SuiteName = suitName;
 			Identifier = identifier;
+			ProjectId = projectId;
 		}
 
-		public TestSuiteAttribute(string suitName, string identifier, string description)
+		public TestSuiteAttribute(string suitName, string identifier, string projectId, string description)
 		{
 			SuiteName = suitName;
 			Identifier = identifier;
+			ProjectId = projectId;
 			Description = description;
 		}
 	}
