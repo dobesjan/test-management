@@ -11,7 +11,6 @@ namespace TestManagement.Reporting.Shared
 	public static class TestReportManager
 	{
 		private static readonly object _lock = new object();
-		// Will it work ok in parallel execution?
 		public static List<ReportTestSuite> TestSuites = new List<ReportTestSuite>();
 
 		public static void WriteReportToFile()
@@ -23,9 +22,20 @@ namespace TestManagement.Reporting.Shared
 			}
 		}
 
+		public static void AddTestSuite(ReportTestSuite suite)
+		{
+			lock (_lock)
+			{
+				TestSuites.Add(suite);
+			}
+		}
+
 		public static void ClearReport()
 		{
-			TestSuites.Clear();
+			lock (_lock)
+			{
+				TestSuites.Clear();
+			}
 		}
 	}
 }

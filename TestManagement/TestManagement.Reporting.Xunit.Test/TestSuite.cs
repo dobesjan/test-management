@@ -1,18 +1,36 @@
 using TestManagement.Reporting.Shared.Attributes;
 using TestManagement.Reporting.Xunit.Attributes;
 using TestManagement.Reporting.Xunit.Fixtures;
+using TestManagement.Reporting.Shared.Core;
+using TestManagement.Reporting.Shared.Models;
+using Xunit.Abstractions;
 
+[assembly: Xunit.TestFramework("TestManagement.Reporting.Shared.Core.TestManagementTestFramework", "TestManagement.Reporting.Shared")]
 namespace TestManagement.Reporting.Xunit.Test
 {
 	//[TestSuiteExecutor]
 	[TestSuite("TestSuite", "1", 1, "Testing suite")]
 	public class TestSuite
 	{
+		private readonly ITestOutputHelper _output;
+
+		public TestSuite(ITestOutputHelper output)
+		{
+			_output = output;
+		}
+
+		[Fact]
+		public void Test()
+		{
+			new TestModel();
+		}
+
 		//[Fact]
 		[TestCase("Test 1", "1", "Testing test")]
 		//[TestCaseExecutor]
 		public async Task Test1()
 		{
+			_output.WriteLine("This is a test log message.");
 			await OpenLoginPage();
 			await EnterUsername();
 			await EnterPassword();

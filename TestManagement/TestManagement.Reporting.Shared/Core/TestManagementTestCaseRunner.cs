@@ -47,7 +47,6 @@ namespace TestManagement.Reporting.Shared.Core
 
 				currentTestCase.Status = TestCaseStatus.FAILED;
 
-				// Parse the stack trace to identify the failed method.
 				var failedMethod = GetFailedStepFromStackTrace(ex);
 				if (failedMethod != null)
 				{
@@ -89,6 +88,8 @@ namespace TestManagement.Reporting.Shared.Core
 				}
 
 				currentSuite?.TestCases.Add(currentTestCase);
+
+				TestReportManager.AddTestSuite(currentSuite);
 			}
 
 			return summary;
