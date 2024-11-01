@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestManagement.Models.Tasks;
 using TestManagement.Models.TestCases.Results;
 using TestManagement.Reporting.Shared.Models;
 
@@ -21,6 +22,8 @@ namespace TestManagement.Models.TestCases
 		public bool AddedAutomatically { get; set; }
 
 		public List<TestCaseHasTestStep>? TestCaseHasTestSteps { get; set; }
+
+		public List<TaskHasTestStep>? TaskHasTestStep { get; set; }
 
 		[InverseProperty(nameof(TestStep))]
 		public List<TestStepResult>? Results { get; set; }

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestManagement.Models.Tasks;
 using TestManagement.Reporting.Shared.Models;
 
 namespace TestManagement.Models.TestCases
@@ -26,6 +27,8 @@ namespace TestManagement.Models.TestCases
 		public List<TestCase>? TestCases { get; set; }
 
 		public List<TestSuiteHasLabel>? TestSuiteHasLabels { get; set; }
+
+		public List<TaskHasTestSuite>? TaskHasTestSuite { get; set; }
 
 		public bool AddedAutomatically { get; set; }
 

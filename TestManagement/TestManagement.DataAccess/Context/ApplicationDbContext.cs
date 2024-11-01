@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestManagement.Models.Filters;
+using TestManagement.Models.Tasks;
 using TestManagement.Models.Teams;
 using TestManagement.Models.TestCases;
 using TestManagement.Models.TestCases.Results;
@@ -96,6 +97,45 @@ namespace TestManagement.DataAccess.Context
 			modelBuilder.Entity<TestCaseHasTestStep>()
 				.HasOne(pc => pc.TestStep)
 				.WithMany(c => c.TestCaseHasTestSteps)
+				.HasForeignKey(pc => pc.TestStepId);
+
+			modelBuilder.Entity<TaskHasTestCase>()
+				.HasKey(pc => new { pc.TaskId, pc.TestCaseId });
+
+			modelBuilder.Entity<TaskHasTestCase>()
+				.HasOne(pc => pc.Task)
+				.WithMany(p => p.TaskHasTestCase)
+				.HasForeignKey(pc => pc.TaskId);
+
+			modelBuilder.Entity<TaskHasTestCase>()
+				.HasOne(pc => pc.TestCase)
+				.WithMany(c => c.TaskHasTestCase)
+				.HasForeignKey(pc => pc.TestCaseId);
+
+			modelBuilder.Entity<TaskHasTestSuite>()
+				.HasKey(pc => new { pc.TaskId, pc.TestSuiteId });
+
+			modelBuilder.Entity<TaskHasTestSuite>()
+				.HasOne(pc => pc.Task)
+				.WithMany(p => p.TaskHasTestSuite)
+				.HasForeignKey(pc => pc.TaskId);
+
+			modelBuilder.Entity<TaskHasTestSuite>()
+				.HasOne(pc => pc.TestSuite)
+				.WithMany(c => c.TaskHasTestSuite)
+				.HasForeignKey(pc => pc.TestSuiteId);
+
+			modelBuilder.Entity<TaskHasTestStep>()
+				.HasKey(pc => new { pc.TaskId, pc.TestStepId });
+
+			modelBuilder.Entity<TaskHasTestStep>()
+				.HasOne(pc => pc.Task)
+				.WithMany(p => p.TaskHasTestStep)
+				.HasForeignKey(pc => pc.TaskId);
+
+			modelBuilder.Entity<TaskHasTestStep>()
+				.HasOne(pc => pc.TestStep)
+				.WithMany(c => c.TaskHasTestStep)
 				.HasForeignKey(pc => pc.TestStepId);
 
 			base.OnModelCreating(modelBuilder);
