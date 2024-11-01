@@ -12,7 +12,7 @@ namespace TestManagement.DataAccess.Repository.TestCases
 	{
 		public TestStepRepository(ApplicationDbContext context) : base(context) 
 		{
-			this.properties = "TestStepResult";
+			this.properties = "TestStepResult,TaskHasTestStep.Task";
 		}
 	}
 }

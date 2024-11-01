@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestManagement.DataAccess.Repository.Tasks;
+using TestManagement.DataAccess.Repository.Tasks.Relations;
 using TestManagement.DataAccess.Repository.Teams;
 using TestManagement.DataAccess.Repository.TestCases;
 using TestManagement.DataAccess.Repository.TestCases.Results;
@@ -23,6 +25,11 @@ namespace TestManagement.DataAccess.Extensions
 			services.AddScoped<ITestStepResultRepository, TestStepResultRepository>();
 
 			services.AddScoped<ITeamRepository, TeamRepository>();
+
+			services.AddScoped<ITaskRepository, TaskRepository>();
+			services.AddScoped<ITaskHasTestCaseRepository, TaskHasTestCaseRepository>();
+			services.AddScoped<ITaskHasTestStepRepository, TaskHasTestStepRepository>();
+			services.AddScoped<ITaskHasTestSuiteRepository, TaskHasTestSuiteRepository>();
 
 			return services;
 		}
