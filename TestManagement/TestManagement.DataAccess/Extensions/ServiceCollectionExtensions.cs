@@ -20,6 +20,7 @@ namespace TestManagement.DataAccess.Extensions
 			services.AddScoped<ITestSuiteRepository, TestSuiteRepository>();
 			services.AddScoped<ITestCaseRepository, TestCaseRepository>();
 			services.AddScoped<ITestStepRepository, TestStepRepository>();
+			services.AddScoped<IEnvironmentRepository, EnvironmentRepository>();
 
 			services.AddScoped<ITestCaseResultRepository, TestCaseResultRepository>();
 			services.AddScoped<ITestStepResultRepository, TestStepResultRepository>();
