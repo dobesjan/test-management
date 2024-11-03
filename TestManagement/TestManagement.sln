@@ -11,13 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestManagement.DataAccess",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{A7D8EA17-A65A-4699-8592-CC24364C0E97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestManagement.Reporting.Xunit", "TestManagement.Reporting.Xunit\TestManagement.Reporting.Xunit.csproj", "{AF57627C-F1A0-43A9-9406-134D999714E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestManagement.Reporting.Xunit", "TestManagement.Reporting.Xunit\TestManagement.Reporting.Xunit.csproj", "{AF57627C-F1A0-43A9-9406-134D999714E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestManagement.Reporting.Shared", "TestManagement.Reporting.Shared\TestManagement.Reporting.Shared.csproj", "{5F868452-D5A5-434A-A0DD-E624FB35A062}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestManagement.Reporting.Shared", "TestManagement.Reporting.Shared\TestManagement.Reporting.Shared.csproj", "{5F868452-D5A5-434A-A0DD-E624FB35A062}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{59E19EB8-7ABA-41E1-B9B5-59A79F5ACC8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestManagement.Reporting.Xunit.Test", "TestManagement.Reporting.Xunit.Test\TestManagement.Reporting.Xunit.Test.csproj", "{4A55F1AB-7B71-41A4-A421-7C7B36FF16A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestManagement.Reporting.Xunit.Test", "TestManagement.Reporting.Xunit.Test\TestManagement.Reporting.Xunit.Test.csproj", "{4A55F1AB-7B71-41A4-A421-7C7B36FF16A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestManagement.Results.Trx.Models", "TestManagement.Results.Trx.Models\TestManagement.Results.Trx.Models.csproj", "{8BFC9A0F-D20B-4025-BDFB-223A7ABC9B1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{4A55F1AB-7B71-41A4-A421-7C7B36FF16A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A55F1AB-7B71-41A4-A421-7C7B36FF16A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A55F1AB-7B71-41A4-A421-7C7B36FF16A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BFC9A0F-D20B-4025-BDFB-223A7ABC9B1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BFC9A0F-D20B-4025-BDFB-223A7ABC9B1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BFC9A0F-D20B-4025-BDFB-223A7ABC9B1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BFC9A0F-D20B-4025-BDFB-223A7ABC9B1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

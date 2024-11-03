@@ -2,7 +2,10 @@
 using TestManagement.DataAccess.Repository.TestCases;
 using TestManagement.DataAccess.Repository.TestCases.Results;
 using TestManagement.Models.TestCases;
+using TestManagement.Models.TestCases.Request;
+using TestManagement.Models.TestCases.Results;
 using TestManagement.Reporting.Shared.Models;
+using TestManagement.Results.Trx.Models;
 
 namespace TestManagement.Api.Controllers
 {
@@ -40,15 +43,15 @@ namespace TestManagement.Api.Controllers
 		}
 
 		[HttpPost("Upload")]
-		public IActionResult Upload([FromBody] List<ReportTestSuite> suites)
+		public IActionResult Upload([FromBody] UploadRequest uploadRequest)
 		{
-			foreach (var suite in suites)
+			foreach (var suite in uploadRequest.TestSuites)
 			{
 				var project = _projectRepository.Get(suite.ProjectId);
 				if (project != null)
 				{
 					TestSuite? testSuite = SaveTestSuite(suite);
-					SaveTestCasesForSuite(suite, testSuite);
+					SaveTestCasesForSuite(suite, testSuite, uploadRequest.Results);
 				}
 				else
 				{
@@ -104,7 +107,7 @@ namespace TestManagement.Api.Controllers
 			
 		}
 
-		private void SaveTestCasesForSuite(ReportTestSuite suite, TestSuite testSuite)
+		private void SaveTestCasesForSuite(ReportTestSuite suite, TestSuite testSuite, TestRun testRun)
 		{
 			if (suite.TestCases != null)
 			{
@@ -130,8 +133,24 @@ namespace TestManagement.Api.Controllers
 					}
 
 					_testCaseRepository.Save();
+					SaveTestResultsForTestCase(testRun, testCase);
 
 					SaveTestStepForTestCase(reportTestCase, testCase);
+				}
+			}
+		}
+
+		private void SaveTestResultsForTestCase(TestRun testRun, TestCase testCase)
+		{
+			if (testRun != null && testRun.Results != null)
+			{
+				var result = testRun.Results.FirstOrDefault(r => r.TestName == testCase.MethodName);
+				if (result != null)
+				{
+					var testCaseResult = TestCaseResult.FromUnitTestResult(testCase.Id, result);
+
+					_testCaseResultRepository.Add(testCaseResult);
+					_testCaseResultRepository.Save();
 				}
 			}
 		}

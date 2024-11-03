@@ -30,6 +30,8 @@ namespace TestManagement.DataAccess.Context
 		#region Results
 		public DbSet<TestCaseResult> TestCaseResults { get; set; }
 		public DbSet<TestStepResult> TestStepResults { get; set; }
+
+		public DbSet<ResultErrorInfo> ResultErrorInfo { get; set; }
 		#endregion
 
 		#region Teams

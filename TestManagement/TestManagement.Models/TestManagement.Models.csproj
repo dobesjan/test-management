@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TestManagement.Reporting.Shared\TestManagement.Reporting.Shared.csproj" />
+    <ProjectReference Include="..\TestManagement.Results.Trx.Models\TestManagement.Results.Trx.Models.csproj" />
   </ItemGroup>
 
 </Project>

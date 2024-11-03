@@ -18,6 +18,7 @@
     <ProjectReference Include="..\TestManagement.DataAccess\TestManagement.DataAccess.csproj" />
     <ProjectReference Include="..\TestManagement.Models\TestManagement.Models.csproj" />
     <ProjectReference Include="..\TestManagement.Reporting.Shared\TestManagement.Reporting.Shared.csproj" />
+    <ProjectReference Include="..\TestManagement.Results.Trx.Models\TestManagement.Results.Trx.Models.csproj" />
   </ItemGroup>
 
 </Project>

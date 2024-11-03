@@ -12,19 +12,15 @@ namespace TestManagement.Reporting.Xunit.Attributes
 	public class TestCaseAttribute : Attribute
 	{
 		public string TestName { get; }
+		public string MethodName { get; }
 		public string Identifier { get; }
 		public string Description { get; }
 
-		public TestCaseAttribute(string testName, string identifier)
+		public TestCaseAttribute(string testName, string identifier, string description = "", [System.Runtime.CompilerServices.CallerMemberName] string methodName = "")
 		{
 			TestName = testName;
 			Identifier = identifier;
-		}
-
-		public TestCaseAttribute(string testName, string identifier, string description)
-		{
-			TestName = testName;
-			Identifier = identifier;
+			MethodName = methodName;
 			Description = description;
 		}
 	}

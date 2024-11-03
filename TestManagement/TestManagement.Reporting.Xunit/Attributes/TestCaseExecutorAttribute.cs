@@ -28,6 +28,7 @@ namespace TestManagement.Reporting.Xunit.Attributes
 				_currentTestCase = new ReportTestCase
 				{
 					Name = attribute.TestName,
+					MethodName = attribute.MethodName,
 					Identifier = attribute.Identifier,
 					Description = attribute.Description,
 					Status = TestCaseStatus.SUCCESS

@@ -19,6 +19,8 @@ namespace TestManagement.Models.TestCases
 		public string Name { get; set; }
 		public string Description { get; set; }
 
+		public string MethodName { get; set; }
+
 		public int TestSuiteId { get; set; }
 
 		[ForeignKey(nameof(TestSuiteId))]
@@ -42,6 +44,7 @@ namespace TestManagement.Models.TestCases
 			Identifier = reportTestCase.Identifier;
 			Name = reportTestCase.Name;
 			Description = reportTestCase.Description;
+			MethodName = reportTestCase.MethodName;
 			AddedAutomatically = true;
 		}
 	}

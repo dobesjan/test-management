@@ -20,9 +20,15 @@ namespace TestManagement.Reporting.Xunit.Test
 		}
 
 		[Fact]
-		public void Test()
+		public async void Test()
 		{
-			new TestModel();
+			await ThrowException();
+		}
+
+		[Fact]
+		public async void Test_Pass()
+		{
+			await OpenLoginPage();
 		}
 
 		//[Fact]
@@ -34,6 +40,12 @@ namespace TestManagement.Reporting.Xunit.Test
 			await OpenLoginPage();
 			await EnterUsername();
 			await EnterPassword();
+		}
+
+		[TestStep("Throw exception", "999", "Just throws exception.")]
+		public async Task ThrowException()
+		{
+			throw new Exception();
 		}
 
 		[TestStep("Open Login Page", "100", "Login page should be displayed")]
