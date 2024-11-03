@@ -65,6 +65,7 @@ namespace TestManagement.Reporting.Xunit.Attributes
 							var testStep = new ReportTestStep
 							{
 								Name = stepAttribute.StepName,
+								MethodName = attribute.MethodName,
 								Identifier = stepAttribute.Identifier,
 								Description = stepAttribute.ExpectedResult
 							};

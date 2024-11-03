@@ -10,6 +10,7 @@ namespace TestManagement.Reporting.Shared.Models
 	{
 		public string Identifier { get; set; }
 		public string Name { get; set; }
+		public string MethodName { get; set; }
 		public string Description { get; set; }
 
 		public ReportError? Error { get; set; }

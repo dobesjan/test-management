@@ -96,12 +96,18 @@ namespace TestManagement.Api.Controllers
 						{
 							Identifier = reportTestStep.Identifier,
 							Name = reportTestStep.Name,
+							MethodName = reportTestStep.MethodName,
 							Description = reportTestStep.Description
 						};
 						_stepRepository.Add(testStep);
 					}
 
 					_stepRepository.Save();
+
+					// TODO: Consider how to resolve test steps failures
+					// Hint: Use reflection to get method name, but how to recognize which steps ran before failure
+					// and which steps didn't run (because they are dependenend on failed step)?
+					// Maybe we must somehow resolve order of these steps
 				}
 			}
 			
@@ -126,6 +132,7 @@ namespace TestManagement.Api.Controllers
 						{
 							Identifier = reportTestCase.Identifier,
 							Name = reportTestCase.Name,
+							MethodName = reportTestCase.MethodName,
 							Description = reportTestCase.Description,
 							TestSuiteId = testSuite.Id
 						};

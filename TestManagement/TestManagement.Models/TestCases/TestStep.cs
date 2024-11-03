@@ -17,6 +17,8 @@ namespace TestManagement.Models.TestCases
 
 		public string Name { get; set; }
 
+		public string MethodName { get; set; }
+
 		public string Description { get; set; }
 
 		public bool AddedAutomatically { get; set; }
@@ -31,6 +33,7 @@ namespace TestManagement.Models.TestCases
 		public void UpdateFromReport(ReportTestStep reportTestStep)
 		{
 			Name = reportTestStep.Name;
+			MethodName = reportTestStep.MethodName;
 			Description = reportTestStep.Description;
 			AddedAutomatically = true;
 		}
